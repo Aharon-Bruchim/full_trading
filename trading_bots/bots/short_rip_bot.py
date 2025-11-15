@@ -1,6 +1,6 @@
 from datetime import datetime
-from bots.base_bot import BaseBot
-from core import indicators, position_tracker
+from trading_bots.bots.base_bot import BaseBot
+from trading_bots.core import indicators, position_tracker
 
 class ShortRipBot(BaseBot):
     

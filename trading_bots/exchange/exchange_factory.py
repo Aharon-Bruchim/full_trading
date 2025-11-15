@@ -1,5 +1,5 @@
 import logging
-from exchange.bitunix_client import BitunixClient
+from trading_bots.exchange.bitunix_client import BitunixClient
 
 def create_exchange_client(exchange_name: str, api_key: str, api_secret: str, logger: logging.Logger = None):
     exchange_name = exchange_name.lower()

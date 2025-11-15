@@ -26,7 +26,7 @@ class BotConfig:
         self.buy_percentage = float(thresh.get('buyPercentage', thresh.get('sellPercentage', 1.0)))
         self.sell_percentage = float(thresh.get('sellPercentage', 1.0))
         
-        self.use_atr = thresh.get('useATR', False)
+        self.use_atr = thresh.get('useATR', True)
         self.atr_period = int(thresh.get('atrPeriod', 14))
         self.atr_multiplier = float(thresh.get('atrMultiplier', 0.7))
         

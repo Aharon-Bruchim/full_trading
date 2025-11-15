@@ -3,10 +3,10 @@ import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from core.config_loader import load_config
-from core.logger import setup_logger
-from exchange.bitunix_client import BitunixClient
-from bots.short_rip_bot import ShortRipBot
+from trading_bots.core.config_loader import load_config
+from trading_bots.core.logger import setup_logger
+from trading_bots.exchange.bitunix_client import BitunixClient
+from trading_bots.bots.short_rip_bot import ShortRipBot
 
 def main():
     if len(sys.argv) < 2:

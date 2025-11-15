@@ -1,4 +1,4 @@
-from regime.regime_types import MarketRegime
+from trading_bots.regime.regime_types import MarketRegime
 
 class RegimeSelector:
     def __init__(self, config: dict = None):

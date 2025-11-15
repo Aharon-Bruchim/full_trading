@@ -5,8 +5,8 @@ import json
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from regime.regime_selector import RegimeSelector
-from regime.regime_types import MarketRegime
+from trading_bots.regime.regime_selector import RegimeSelector
+from trading_bots.regime.regime_types import MarketRegime
 
 def main():
     if len(sys.argv) < 2:

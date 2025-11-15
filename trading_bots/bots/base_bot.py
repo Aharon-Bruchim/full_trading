@@ -6,11 +6,11 @@ from collections import deque
 from abc import ABC, abstractmethod
 import traceback
 
-from core.config_loader import BotConfig, update_config_status
-from core.persistence import save_state, load_state
-from core.risk_manager import RiskManager
-from core import position_tracker
-from exchange.bitunix_client import BitunixClient
+from trading_bots.core.config_loader import BotConfig, update_config_status
+from trading_bots.core.persistence import save_state, load_state
+from trading_bots.core.risk_manager import RiskManager
+from trading_bots.core import position_tracker
+from trading_bots.exchange.bitunix_client import BitunixClient
 
 class BaseBot(ABC):
     def __init__(self, config: BotConfig, exchange_client: BitunixClient, config_path: str, logger):

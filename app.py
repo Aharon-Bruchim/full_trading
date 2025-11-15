@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from market_signal_service.api.routes import signal_routes
+from trading_bots.api.routes import bot_routes
 
 app = FastAPI(
     title="Full Trading Platform",
@@ -18,9 +19,15 @@ app.add_middleware(
 )
 
 app.include_router(
-    signal_routes.router, 
+    signal_routes.router,
     prefix="/api",
     tags=["Market Signals"]
+)
+
+app.include_router(
+    bot_routes.router,
+    prefix="/api/bots",
+    tags=["Trading Bots"]
 )
 
 @app.get("/")
@@ -30,7 +37,7 @@ async def root():
         "version": "1.0.0",
         "services": {
             "signal": "/api/signal",
-            "bots": "/api/bots (coming soon)",
+            "bots": "/api/bots",
             "docs": "/docs",
             "health": "/health"
         }
@@ -42,7 +49,7 @@ async def health_check():
         "status": "healthy",
         "services": {
             "signals": "active",
-            "bots": "planned"
+            "bots": "active"
         }
     }
 

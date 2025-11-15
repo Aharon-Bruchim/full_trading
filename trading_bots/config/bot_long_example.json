@@ -18,7 +18,7 @@
     "maxTradesPerMinute": 3,
     "positionSizeLimit": 5000,
     "sellPercentage": 1.0,
-    "useATR": false,
+    "useATR": true,
     "atrPeriod": 14,
     "atrMultiplier": 0.7
   },

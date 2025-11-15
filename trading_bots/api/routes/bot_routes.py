@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
 from pydantic import BaseModel
+from trading_bots.domain.services.bot_manager import BotManager
 
 router = APIRouter()
 
-bot_manager = None
-
+bot_manager = BotManager()
 class StartBotRequest(BaseModel):
     bot_type: str
     symbol: str
