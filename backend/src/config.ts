@@ -22,4 +22,7 @@ export const config = {
     cors: {
         origin: env.get('CORS_ORIGIN').required().asString(),
     },
+    python: {
+        url: env.get('PYTHON_SERVICE_URL').required().asString(),
+    },
 };

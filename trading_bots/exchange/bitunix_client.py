@@ -79,15 +79,15 @@ class BitunixClient:
         return []
     
     def place_order(
-    self,
-    symbol: str,
-    side: str,
-    qty: float,
-    order_type: str = 'MARKET',
-    trade_side: str = None,
-    position_id: str = None,
-    reduce_only: bool = False
-):
+        self,
+        symbol: str,
+        side: str,
+        qty: float,
+        order_type: str = 'MARKET',
+        trade_side: str = None,
+        position_id: str = None,
+        reduce_only: bool = False
+    ):
         self.logger.info(f"{side} ORDER: {qty} {symbol}")
         
         try:
@@ -103,8 +103,16 @@ class BitunixClient:
             
             if result and str(result.get('code')) == '0':
                 order_data = result.get('data', {})
-                order_id = order_data.get('orderId')
-                return {'id': order_id, 'qty': qty}
+                place_status = order_data.get('placeStatus')
+                
+                if place_status == 1:
+                    order_id = order_data.get('orderId')
+                    self.logger.info(f"Order placed successfully: {order_id}")
+                    return {'id': order_id, 'qty': qty}
+                else:
+                    place_msg = order_data.get('placeMsg', 'Unknown error')
+                    self.logger.error(f"Order placement failed: {place_msg}")
+                    return None
             else:
                 error_msg = result.get('msg') if result else 'No response'
                 self.logger.error(f"Order failed: {error_msg}")

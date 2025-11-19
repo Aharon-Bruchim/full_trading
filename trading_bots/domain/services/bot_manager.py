@@ -28,8 +28,13 @@ class BotManager:
         if not bot:
             raise ValueError(f"Bot {bot_id} not found in MongoDB")
         
-        if bot.get('status') == 'RUNNING':
-            raise ValueError(f"Bot {bot_id} is already running")
+        if bot_id in self.active_threads and self.active_threads[bot_id].is_alive():
+            print(f"DEBUG: Bot {bot_id} thread already alive, skipping")
+            return {
+                "bot_id": bot_id,
+                "status": "ALREADY_RUNNING",
+                "message": "Bot is already running"
+            }
         
         self.bots_collection.update_one(
             {"_id": ObjectId(bot_id)},

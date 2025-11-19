@@ -57,13 +57,22 @@ export class BotManager {
             timestamp: Date.now(),
         });
 
-        return { ...createdBot.toObject(), stats };
+        const result = { ...createdBot.toObject(), stats };
+        const botId = String((result as any)._id);
+
+        try {
+            await BotManager.startBot(botId);
+            console.log(`✅ Bot ${botId} auto-started successfully`);
+        } catch (error: any) {
+            console.error(`⚠️ Failed to auto-start bot ${botId}:`, error.message);
+        }
+
+        return result;
     };
 
     static updateOne = async (botId: string, update: Partial<Bot>) => {
         return BotModel.findByIdAndUpdate(botId, update, { new: true }).orFail(new DocumentNotFoundError(botId)).lean().exec();
     };
-
     static deleteOne = async (botId: string) => {
         const bot = await BotModel.findById(botId).orFail(new DocumentNotFoundError(botId));
 
