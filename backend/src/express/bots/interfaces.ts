@@ -7,7 +7,6 @@ export enum BotStatus {
 }
 
 export enum BotType {
-    RANGE = 'RANGE',
     TREND_LONG = 'TREND_LONG',
     TREND_SHORT = 'TREND_SHORT',
 }
