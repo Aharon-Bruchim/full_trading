@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from trading_bots.api.routes import balance_routes
 from trading_bots.api.routes import signal_routes
 from trading_bots.api.routes import bot_routes
+from jwt_middleware import jwt_middleware
 
 
 app = FastAPI(
@@ -22,19 +23,22 @@ app.add_middleware(
 app.include_router(
     signal_routes.router,
     prefix="/api",
-    tags=["Market Signals"]
+    tags=["Market Signals"],
+    dependencies=[Depends(jwt_middleware)]
 )
 
 app.include_router(
     bot_routes.router,
     prefix="/api/bots",
-    tags=["Trading Bots"]
+    tags=["Trading Bots"],
+    dependencies=[Depends(jwt_middleware)]
 )
 
 app.include_router(
     balance_routes.router,
     prefix="/api",
-    tags=["Balance"]
+    tags=["Balance"],
+    dependencies=[Depends(jwt_middleware)]
 )
 
 

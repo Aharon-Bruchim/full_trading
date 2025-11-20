@@ -10,7 +10,7 @@ export class signalsController {
                 return res.status(400).json({ error: 'Symbol is required' });
             }
 
-            const result = await SignalsManager.getSignals(symbol, (timeframe as string) || '1h', (exchange as string) || 'binance');
+            const result = await SignalsManager.getSignals(symbol, (timeframe as string) || '1h', (exchange as string) || 'binance', req);
 
             res.json(result);
         } catch (error: any) {

@@ -4,6 +4,7 @@ import { PositionModel } from '../positions/model';
 import { PositionStatus } from '../positions/interfaces';
 import { Bot, BotCreateInput, BotStatus, BotWithStats } from './interfaces';
 import { WebSocketEvent, WebSocketServer } from '../WebSocketServer';
+import { Request } from 'express';
 
 export class BotManager {
     static getByQuery = async (query: Partial<Bot>, step: number, limit?: number) => {
@@ -34,7 +35,7 @@ export class BotManager {
         return result;
     };
 
-    static createOne = async (bot: BotCreateInput): Promise<any> => {
+    static createOne = async (bot: BotCreateInput, req?: Request): Promise<any> => {
         const createdBot = await BotModel.create({
             ...bot,
             status: BotStatus.STOPPED,
@@ -61,7 +62,7 @@ export class BotManager {
         const botId = String((result as any)._id);
 
         try {
-            await BotManager.startBot(botId);
+            await BotManager.startBot(botId, req);
             console.log(`✅ Bot ${botId} auto-started successfully`);
         } catch (error: any) {
             console.error(`⚠️ Failed to auto-start bot ${botId}:`, error.message);
@@ -73,6 +74,7 @@ export class BotManager {
     static updateOne = async (botId: string, update: Partial<Bot>) => {
         return BotModel.findByIdAndUpdate(botId, update, { new: true }).orFail(new DocumentNotFoundError(botId)).lean().exec();
     };
+
     static deleteOne = async (botId: string) => {
         const bot = await BotModel.findById(botId).orFail(new DocumentNotFoundError(botId));
 
@@ -87,7 +89,7 @@ export class BotManager {
         return deletedBot;
     };
 
-    static startBot = async (botId: string): Promise<BotDocument> => {
+    static startBot = async (botId: string, req?: Request): Promise<BotDocument> => {
         const bot = await BotModel.findById(botId).orFail(new DocumentNotFoundError(botId));
 
         if (bot.status === BotStatus.RUNNING) {
@@ -100,7 +102,7 @@ export class BotManager {
 
         try {
             const { PythonBotService } = await import('../../services/python-bot-service');
-            await PythonBotService.startBot(botId);
+            await PythonBotService.startBot(botId, req);
         } catch (error: any) {
             bot.status = BotStatus.STOPPED;
             await bot.save();
@@ -117,7 +119,7 @@ export class BotManager {
         return bot.toObject();
     };
 
-    static stopBot = async (botId: string): Promise<BotDocument> => {
+    static stopBot = async (botId: string, req?: Request): Promise<BotDocument> => {
         const bot = await BotModel.findById(botId).orFail(new DocumentNotFoundError(botId));
 
         if (bot.status === BotStatus.STOPPED) {
@@ -126,7 +128,7 @@ export class BotManager {
 
         try {
             const { PythonBotService } = await import('../../services/python-bot-service');
-            await PythonBotService.stopBot(botId);
+            await PythonBotService.stopBot(botId, req);
         } catch (error: any) {
             console.error(`Failed to stop bot in Python: ${error.message}`);
         }

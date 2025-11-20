@@ -29,7 +29,7 @@ export class BotsController {
     };
 
     static createOne = async (req: TypedRequest<typeof createOneRequestSchema>, res: Response) => {
-        res.json(await BotManager.createOne(req.body));
+        res.json(await BotManager.createOne(req.body, req));
     };
 
     static updateOne = async (req: TypedRequest<typeof updateOneRequestSchema>, res: Response) => {
@@ -41,11 +41,11 @@ export class BotsController {
     };
 
     static startBot = async (req: TypedRequest<typeof startBotRequestSchema>, res: Response) => {
-        res.json(await BotManager.startBot(req.params.id));
+        res.json(await BotManager.startBot(req.params.id, req));
     };
 
     static stopBot = async (req: TypedRequest<typeof stopBotRequestSchema>, res: Response) => {
-        res.json(await BotManager.stopBot(req.params.id));
+        res.json(await BotManager.stopBot(req.params.id, req));
     };
 
     static getBotStats = async (req: TypedRequest<typeof getBotStatsRequestSchema>, res: Response) => {

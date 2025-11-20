@@ -8,14 +8,17 @@ import {
   ChartBarIcon,
   ClockIcon,
   Cog6ToothIcon,
+  ArrowRightStartOnRectangleIcon,
+  SignalIcon,
 } from "@heroicons/react/24/outline";
 import { GlobeAltIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
   { path: "/", icon: HomeIcon, label: "nav.home" },
   { path: "/bots", icon: CpuChipIcon, label: "nav.bots" },
-  { path: "/analytics", icon: GlobeAltIcon, label: "nav.analytics" },
+  { path: "/analytics", icon: SignalIcon, label: "nav.analytics" },
   { path: "/positions", icon: ChartBarIcon, label: "nav.positions" },
   { path: "/trades", icon: ClockIcon, label: "nav.trades" },
   { path: "/wallet", icon: WalletIcon, label: "nav.wallet" },
@@ -25,11 +28,18 @@ const navItems = [
 export const Navbar = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  const { logout } = useAuth();
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "he" : "en";
     i18n.changeLanguage(newLang);
     document.dir = newLang === "he" ? "rtl" : "ltr";
+  };
+
+  const handleLogout = () => {
+    {
+      logout();
+    }
   };
 
   return (
@@ -80,8 +90,22 @@ export const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
               className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all"
+              title={t("nav.changeLanguage", "Change Language")}
             >
               <GlobeAltIcon className="w-6 h-6" />
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg text-red-400 hover:text-white hover:bg-red-600/20 border border-red-500/20 hover:border-red-500 transition-all"
+              title={t("auth.logout", "Logout")}
+            >
+              <ArrowRightStartOnRectangleIcon className="w-5 h-5" />
+              <span className="hidden md:inline">
+                {t("auth.logout", "Logout")}
+              </span>
             </motion.button>
           </div>
         </div>

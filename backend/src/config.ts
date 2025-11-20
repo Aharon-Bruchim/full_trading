@@ -26,4 +26,7 @@ export const config = {
     python: {
         url: env.get('PYTHON_SERVICE_URL').required().asString(),
     },
+    jwt: {
+        secret: env.get('JWT_SECRET').required().asString(),
+    },
 };
