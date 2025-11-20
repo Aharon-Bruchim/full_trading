@@ -1,6 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import {
   HomeIcon,
   CpuChipIcon,
@@ -8,17 +8,18 @@ import {
   ChartBarIcon,
   ClockIcon,
   Cog6ToothIcon,
-} from '@heroicons/react/24/outline';
-import { GlobeAltIcon } from '@heroicons/react/24/solid';
-import clsx from 'clsx';
+} from "@heroicons/react/24/outline";
+import { GlobeAltIcon } from "@heroicons/react/24/solid";
+import clsx from "clsx";
 
 const navItems = [
-  { path: '/', icon: HomeIcon, label: 'nav.home' },
-  { path: '/bots', icon: CpuChipIcon, label: 'nav.bots' },
-  { path: '/positions', icon: ChartBarIcon, label: 'nav.positions' },
-  { path: '/trades', icon: ClockIcon, label: 'nav.trades' },
-  { path: '/wallet', icon: WalletIcon, label: 'nav.wallet' },
-  { path: '/settings', icon: Cog6ToothIcon, label: 'nav.settings' },
+  { path: "/", icon: HomeIcon, label: "nav.home" },
+  { path: "/bots", icon: CpuChipIcon, label: "nav.bots" },
+  { path: "/analytics", icon: GlobeAltIcon, label: "nav.analytics" },
+  { path: "/positions", icon: ChartBarIcon, label: "nav.positions" },
+  { path: "/trades", icon: ClockIcon, label: "nav.trades" },
+  { path: "/wallet", icon: WalletIcon, label: "nav.wallet" },
+  { path: "/settings", icon: Cog6ToothIcon, label: "nav.settings" },
 ];
 
 export const Navbar = () => {
@@ -26,9 +27,9 @@ export const Navbar = () => {
   const location = useLocation();
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'he' : 'en';
+    const newLang = i18n.language === "en" ? "he" : "en";
     i18n.changeLanguage(newLang);
-    document.dir = newLang === 'he' ? 'rtl' : 'ltr';
+    document.dir = newLang === "he" ? "rtl" : "ltr";
   };
 
   return (
@@ -61,10 +62,10 @@ export const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className={clsx(
-                      'flex items-center gap-2 px-4 py-2 rounded-lg transition-all',
+                      "flex items-center gap-2 px-4 py-2 rounded-lg transition-all",
                       isActive
-                        ? 'bg-blue-600 text-white'
-                        : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                        ? "bg-blue-600 text-white"
+                        : "text-gray-400 hover:text-white hover:bg-gray-800"
                     )}
                   >
                     <Icon className="w-5 h-5" />

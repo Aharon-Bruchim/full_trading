@@ -1,34 +1,39 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { HomePage } from '@/pages/HomePage';
-import { BotsPage } from '@/pages/BotsPage';
-import { PositionsPage } from '@/pages/PositionsPage';
-import { TradesPage } from '@/pages/TradesPage';
-import { WalletPage } from '@/pages/WalletPage';
-import { SettingsPage } from '@/pages/SettingsPage';
+import { createBrowserRouter } from "react-router-dom";
+import { HomePage } from "@/pages/HomePage";
+import { BotsPage } from "@/pages/BotsPage";
+import { MarketSignalsPage } from "@/pages/MarketSignalsPage";
+import { PositionsPage } from "@/pages/PositionsPage";
+import { TradesPage } from "@/pages/TradesPage";
+import { WalletPage } from "@/pages/WalletPage";
+import { SettingsPage } from "@/pages/SettingsPage";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <HomePage />,
   },
   {
-    path: '/bots',
+    path: "/bots",
     element: <BotsPage />,
   },
   {
-    path: '/positions',
+    path: "/analytics",
+    element: <MarketSignalsPage />,
+  },
+  {
+    path: "/positions",
     element: <PositionsPage />,
   },
   {
-    path: '/trades',
+    path: "/trades",
     element: <TradesPage />,
   },
   {
-    path: '/wallet',
+    path: "/wallet",
     element: <WalletPage />,
   },
   {
-    path: '/settings',
+    path: "/settings",
     element: <SettingsPage />,
   },
 ]);

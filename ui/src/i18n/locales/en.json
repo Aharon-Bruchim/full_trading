@@ -6,7 +6,9 @@
     "positions": "Positions",
     "trades": "Trade History",
     "stats": "Statistics",
-    "settings": "Settings"
+    "settings": "Settings",
+    "analytics": "Analytics"
+
   },
   "home": {
     "welcome": "Welcome to Crypto Trading Platform",

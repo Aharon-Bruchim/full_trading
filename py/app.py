@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from trading_bots.api.routes import balance_routes
-
-
-from market_signal_service.api.routes import signal_routes
+from trading_bots.api.routes import signal_routes
 from trading_bots.api.routes import bot_routes
+
+
 app = FastAPI(
     title="Full Trading Platform",
     description="Market Signals + Trading Bots Management",
@@ -44,7 +44,7 @@ async def root():
         "message": "Full Trading Platform API",
         "version": "1.0.0",
         "services": {
-            "signal": "/api/signal",
+            "signal": "/api/signals",
             "bots": "/api/bots",
             "balances": "/api/balances",
             "docs": "/docs",

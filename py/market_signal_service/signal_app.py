@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from market_signal_service.api.routes import signal_routes
+from py.trading_bots.api.routes import signal_routes
 from market_signal_service.infrastructure.config.settings import Settings
 from market_signal_service.infrastructure.logging.logger import setup_logger
 

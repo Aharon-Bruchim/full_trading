@@ -4,7 +4,7 @@ router = APIRouter(tags=["signals"])
 
 signal_controller = SignalController()
 
-@router.get("/signal")
+@router.get("/signals")
 async def get_signal(
     symbol: str,
     timeframe: str = "1h",
@@ -12,6 +12,3 @@ async def get_signal(
 ):
     return await signal_controller.get_signal(symbol, timeframe, exchange)
 
-@router.post("/signal")
-async def get_signal_post(request: dict):
-    return await signal_controller.get_signal_from_request(request)
