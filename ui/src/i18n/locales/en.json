@@ -6,9 +6,7 @@
     "positions": "Positions",
     "trades": "Trade History",
     "stats": "Statistics",
-    "settings": "Settings",
     "analytics": "Analytics"
-
   },
   "home": {
     "welcome": "Welcome to Crypto Trading Platform",
@@ -107,6 +105,7 @@
     "liquidation": "Liquidation Price",
     "close": "Close Position"
   },
+
   "trades": {
     "title": "Trade History",
     "time": "Time",
@@ -121,7 +120,8 @@
     "buy": "Buy",
     "sell": "Sell",
     "market": "Market",
-    "limit": "Limit"
+    "limit": "Limit",
+    "noTrades": "No trades yet"
   },
   "stats": {
     "title": "Statistics",
@@ -139,15 +139,7 @@
     "sharpeRatio": "Sharpe Ratio",
     "profitFactor": "Profit Factor"
   },
-  "settings": {
-    "title": "Settings",
-    "language": "Language",
-    "theme": "Theme",
-    "notifications": "Notifications",
-    "apiKeys": "API Keys",
-    "refreshInterval": "Refresh Interval",
-    "save": "Save Changes"
-  },
+
   "common": {
     "loading": "Loading...",
     "error": "Error",
@@ -163,5 +155,121 @@
     "filter": "Filter",
     "export": "Export",
     "refresh": "Refresh"
+  },
+  "signals": {
+    "title": "Market Signal Analysis",
+    "subtitle": "Advanced multi-factor technical analysis engine",
+    "analyze": "Analyze Symbol",
+    "analyzeTitle": "Analyze Market Signal",
+    "recent": "Recent Analyses",
+    "noSignals": "No signals analyzed yet",
+    "startAnalyzing": "Start analyzing market trends and signals",
+
+    "weights": {
+      "trend": "Trend Analysis",
+      "momentum": "Momentum",
+      "strength": "Strength",
+      "structure": "Structure",
+      "weightInScoring": "Weight in scoring"
+    },
+
+    "flow": {
+      "title": "Analysis Flow",
+      "marketData": "Market Data",
+      "candlesCount": "300 OHLC candles",
+      "decisionEngine": "Decision Engine",
+      "multiFactorAnalysis": "Multi-factor analysis hub",
+      "scoringEngine": "Scoring Engine",
+      "finalScoreRange": "Final Score Range",
+
+      "trend": "Trend",
+      "momentum": "Momentum",
+      "strength": "Strength",
+      "structure": "Structure",
+
+      "trendIndicators": {
+        "ma50": "MA50, MA200",
+        "ema20": "EMA20"
+      },
+      "momentumIndicators": {
+        "rsi": "RSI (14)",
+        "macd": "MACD (12/26/9)",
+        "stochastic": "Stochastic"
+      },
+      "strengthIndicators": {
+        "adx": "ADX Indicator",
+        "trendStrength": "Trend Strength"
+      },
+      "structureIndicators": {
+        "higherHighs": "Higher Highs/Lows",
+        "marketPatterns": "Market Patterns"
+      },
+
+      "trendStatus": "UPTREND / DOWNTREND / SIDEWAYS",
+      "momentumStatus": "BULLISH / BEARISH / NEUTRAL",
+      "strengthStatus": "STRONG / MODERATE / WEAK",
+      "structureStatus": "BULLISH / BEARISH / CHOPPY"
+    },
+
+    "actions": {
+      "buy": "BUY",
+      "hold": "HOLD",
+      "sell": "SELL"
+    },
+    "form": {
+      "symbolRequired": "Symbol is required",
+      "exchange": "Exchange",
+      "exchangeRequired": "Exchange is required",
+      "timeframe": "Timeframe",
+      "timeframeRequired": "Timeframe is required",
+      "timeframes": {
+        "1m": "1 Minute",
+        "5m": "5 Minutes",
+        "15m": "15 Minutes",
+        "30m": "30 Minutes",
+        "1h": "1 Hour",
+        "4h": "4 Hours",
+        "1d": "1 Day"
+      },
+      "dataPoints": "Data Points",
+      "limitRequired": "Limit is required",
+      "limitMin": "Minimum 100 data points",
+      "limitMax": "Maximum 500 data points",
+      "dataPointsHint": "Number of historical candles to analyze (100-500)"
+    },
+    "details": {
+      "title": "Signal Analysis",
+      "score": "Score",
+      "strength": "Strength",
+      "scoreBreakdown": "Score Breakdown",
+      "trendAnalysis": "Trend Analysis",
+      "currentPrice": "Current Price",
+      "priceVsMa50": "Price vs MA50",
+      "priceVsMa200": "Price vs MA200",
+      "momentumIndicators": "Momentum Indicators",
+      "macdSignal": "MACD Signal",
+      "macdHistogram": "MACD Histogram",
+      "stochasticK": "Stochastic %K",
+      "stochasticD": "Stochastic %D",
+      "strengthMetrics": "Strength Metrics",
+      "diDifference": "DI Difference",
+      "marketStructure": "Market Structure",
+      "swingHighs": "Swing Highs",
+      "swingLows": "Swing Lows",
+      "lastHigh": "Last High",
+      "lastLow": "Last Low",
+      "candlesAgo": "Candles Ago",
+      "note": "Note",
+      "disclaimer": "This analysis is based on technical indicators and should not be used as the sole basis for trading decisions.",
+      "rsiOverbought": "RSI is in overbought territory (>70) - consider waiting for a pullback.",
+      "rsiOversold": "RSI is in oversold territory (<30) - potential bounce opportunity.",
+      "adxWeak": "ADX is weak (<20) - trend strength is low, avoid trend-following strategies."
+    },
+    "card": {
+      "deleteAnalysis": "Delete analysis"
+    }
+  },
+  "auth": {
+    "logout": "Logout"
   }
 }

@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+import apiClient from "./client";
 
 export interface Balance {
   exchange: string;
@@ -18,7 +16,7 @@ export interface BalanceResponse {
 
 export const walletApi = {
   getBitunixBalance: async (): Promise<BalanceResponse> => {
-    const response = await axios.get(`${API_BASE_URL}/api/balances`);
+    const response = await apiClient.get("/api/balances");
     return response.data;
   },
 };

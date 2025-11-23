@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Modal } from "@/components/ui/Modal";
 import {
   ArrowTrendingUpIcon,
@@ -20,6 +21,8 @@ export const SignalDetailsModal = ({
   onClose,
   signal,
 }: SignalDetailsModalProps) => {
+  const { t } = useTranslation();
+
   if (!signal) return null;
 
   const getSignalColor = (signalType: string) => {
@@ -112,7 +115,7 @@ export const SignalDetailsModal = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={`${signal.symbol} Signal Analysis`}
+      title={`${signal.symbol} ${t("signals.details.title")}`}
       maxWidth="3xl"
     >
       <div className="space-y-6">
@@ -156,11 +159,11 @@ export const SignalDetailsModal = ({
                 </p>
               </div>
               <p className="text-gray-400 text-sm mt-2">
-                Score:{" "}
+                {t("signals.details.score")}:{" "}
                 <span className="font-bold">{signal.score?.toFixed(3)}</span>
               </p>
               <p className="text-gray-400 text-sm">
-                Strength:{" "}
+                {t("signals.details.strength")}:{" "}
                 <span className="font-bold">{signal.strength_percent}%</span>
               </p>
             </div>
@@ -170,7 +173,9 @@ export const SignalDetailsModal = ({
             <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <ArrowTrendingUpIcon className="w-4 h-4 text-blue-400" />
-                <p className="text-xs text-gray-400">Trend</p>
+                <p className="text-xs text-gray-400">
+                  {t("signals.flow.trend")}
+                </p>
               </div>
               <p
                 className={`text-sm font-bold px-2 py-1 rounded ${getCategoryColor(
@@ -184,7 +189,9 @@ export const SignalDetailsModal = ({
             <div className="bg-purple-500/5 border border-purple-500/20 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <BoltIcon className="w-4 h-4 text-purple-400" />
-                <p className="text-xs text-gray-400">Momentum</p>
+                <p className="text-xs text-gray-400">
+                  {t("signals.flow.momentum")}
+                </p>
               </div>
               <p
                 className={`text-sm font-bold px-2 py-1 rounded ${getCategoryColor(
@@ -198,7 +205,9 @@ export const SignalDetailsModal = ({
             <div className="bg-green-500/5 border border-green-500/20 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <ShieldCheckIcon className="w-4 h-4 text-green-400" />
-                <p className="text-xs text-gray-400">Strength</p>
+                <p className="text-xs text-gray-400">
+                  {t("signals.flow.strength")}
+                </p>
               </div>
               <p
                 className={`text-sm font-bold px-2 py-1 rounded ${getCategoryColor(
@@ -212,7 +221,9 @@ export const SignalDetailsModal = ({
             <div className="bg-orange-500/5 border border-orange-500/20 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <CubeTransparentIcon className="w-4 h-4 text-orange-400" />
-                <p className="text-xs text-gray-400">Structure</p>
+                <p className="text-xs text-gray-400">
+                  {t("signals.flow.structure")}
+                </p>
               </div>
               <p
                 className={`text-sm font-bold px-2 py-1 rounded ${getCategoryColor(
@@ -229,7 +240,7 @@ export const SignalDetailsModal = ({
         <div className="bg-[#1a1f2e] rounded-lg p-6 border border-[#2a3441]">
           <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
             <ChartBarIcon className="w-5 h-5 text-blue-400" />
-            Score Breakdown
+            {t("signals.details.scoreBreakdown")}
           </h4>
           <div className="space-y-3">
             {Object.entries(scoreBreakdown).map(
@@ -274,11 +285,15 @@ export const SignalDetailsModal = ({
           <div className="bg-[#1a1f2e] rounded-lg p-5 border border-[#2a3441]">
             <div className="flex items-center gap-2 mb-4">
               <ArrowTrendingUpIcon className="w-5 h-5 text-blue-400" />
-              <h4 className="text-lg font-bold text-white">Trend Analysis</h4>
+              <h4 className="text-lg font-bold text-white">
+                {t("signals.details.trendAnalysis")}
+              </h4>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-400">Current Price</span>
+                <span className="text-gray-400">
+                  {t("signals.details.currentPrice")}
+                </span>
                 <span className="text-white font-semibold">
                   ${trendDetails.current_price?.toFixed(2) || "N/A"}
                 </span>
@@ -297,7 +312,9 @@ export const SignalDetailsModal = ({
               </div>
               <div className="h-px bg-gray-700 my-2" />
               <div className="flex justify-between">
-                <span className="text-gray-400">Price vs MA50</span>
+                <span className="text-gray-400">
+                  {t("signals.details.priceVsMa50")}
+                </span>
                 <span
                   className={`font-semibold ${
                     trendDetails.price_vs_ma50 >= 0
@@ -310,7 +327,9 @@ export const SignalDetailsModal = ({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Price vs MA200</span>
+                <span className="text-gray-400">
+                  {t("signals.details.priceVsMa200")}
+                </span>
                 <span
                   className={`font-semibold ${
                     trendDetails.price_vs_ma200 >= 0
@@ -329,7 +348,7 @@ export const SignalDetailsModal = ({
             <div className="flex items-center gap-2 mb-4">
               <BoltIcon className="w-5 h-5 text-purple-400" />
               <h4 className="text-lg font-bold text-white">
-                Momentum Indicators
+                {t("signals.details.momentumIndicators")}
               </h4>
             </div>
             <div className="space-y-2 text-sm">
@@ -354,13 +373,17 @@ export const SignalDetailsModal = ({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">MACD Signal</span>
+                <span className="text-gray-400">
+                  {t("signals.details.macdSignal")}
+                </span>
                 <span className="text-white font-semibold">
                   {momentumDetails.macd_signal?.toFixed(2) || "N/A"}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">MACD Histogram</span>
+                <span className="text-gray-400">
+                  {t("signals.details.macdHistogram")}
+                </span>
                 <span
                   className={`font-semibold ${
                     momentumDetails.macd_histogram >= 0
@@ -373,7 +396,9 @@ export const SignalDetailsModal = ({
               </div>
               <div className="h-px bg-gray-700 my-2" />
               <div className="flex justify-between">
-                <span className="text-gray-400">Stochastic %K</span>
+                <span className="text-gray-400">
+                  {t("signals.details.stochasticK")}
+                </span>
                 <span
                   className={`font-semibold ${
                     momentumDetails.stoch_k > 80
@@ -387,7 +412,9 @@ export const SignalDetailsModal = ({
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Stochastic %D</span>
+                <span className="text-gray-400">
+                  {t("signals.details.stochasticD")}
+                </span>
                 <span
                   className={`font-semibold ${
                     momentumDetails.stoch_d > 80
@@ -406,7 +433,9 @@ export const SignalDetailsModal = ({
           <div className="bg-[#1a1f2e] rounded-lg p-5 border border-[#2a3441]">
             <div className="flex items-center gap-2 mb-4">
               <ShieldCheckIcon className="w-5 h-5 text-green-400" />
-              <h4 className="text-lg font-bold text-white">Strength Metrics</h4>
+              <h4 className="text-lg font-bold text-white">
+                {t("signals.details.strengthMetrics")}
+              </h4>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -435,7 +464,9 @@ export const SignalDetailsModal = ({
               </div>
               <div className="h-px bg-gray-700 my-2" />
               <div className="flex justify-between">
-                <span className="text-gray-400">DI Difference</span>
+                <span className="text-gray-400">
+                  {t("signals.details.diDifference")}
+                </span>
                 <span
                   className={`font-semibold ${
                     strengthDetails.di_diff >= 0
@@ -453,17 +484,23 @@ export const SignalDetailsModal = ({
           <div className="bg-[#1a1f2e] rounded-lg p-5 border border-[#2a3441]">
             <div className="flex items-center gap-2 mb-4">
               <CubeTransparentIcon className="w-5 h-5 text-orange-400" />
-              <h4 className="text-lg font-bold text-white">Market Structure</h4>
+              <h4 className="text-lg font-bold text-white">
+                {t("signals.details.marketStructure")}
+              </h4>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-400">Swing Highs</span>
+                <span className="text-gray-400">
+                  {t("signals.details.swingHighs")}
+                </span>
                 <span className="text-white font-semibold">
                   {structureDetails.swing_high_count || 0}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-400">Swing Lows</span>
+                <span className="text-gray-400">
+                  {t("signals.details.swingLows")}
+                </span>
                 <span className="text-white font-semibold">
                   {structureDetails.swing_low_count || 0}
                 </span>
@@ -472,7 +509,9 @@ export const SignalDetailsModal = ({
                 <>
                   <div className="h-px bg-gray-700 my-2" />
                   <div className="flex justify-between">
-                    <span className="text-gray-400 text-xs">Last High</span>
+                    <span className="text-gray-400 text-xs">
+                      {t("signals.details.lastHigh")}
+                    </span>
                     <span className="text-green-400 font-semibold text-xs">
                       $
                       {structureDetails.last_swing_high.value?.toLocaleString() ||
@@ -480,7 +519,9 @@ export const SignalDetailsModal = ({
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400 text-xs">Candles Ago</span>
+                    <span className="text-gray-400 text-xs">
+                      {t("signals.details.candlesAgo")}
+                    </span>
                     <span className="text-gray-400 font-semibold text-xs">
                       {300 - (structureDetails.last_swing_high.index || 0)}
                     </span>
@@ -491,7 +532,9 @@ export const SignalDetailsModal = ({
                 <>
                   <div className="h-px bg-gray-700 my-2" />
                   <div className="flex justify-between">
-                    <span className="text-gray-400 text-xs">Last Low</span>
+                    <span className="text-gray-400 text-xs">
+                      {t("signals.details.lastLow")}
+                    </span>
                     <span className="text-red-400 font-semibold text-xs">
                       $
                       {structureDetails.last_swing_low.value?.toLocaleString() ||
@@ -499,7 +542,9 @@ export const SignalDetailsModal = ({
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400 text-xs">Candles Ago</span>
+                    <span className="text-gray-400 text-xs">
+                      {t("signals.details.candlesAgo")}
+                    </span>
                     <span className="text-gray-400 font-semibold text-xs">
                       {300 - (structureDetails.last_swing_low.index || 0)}
                     </span>
@@ -515,28 +560,26 @@ export const SignalDetailsModal = ({
           strengthDetails.adx < 20) && (
           <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-4">
             <p className="text-xs text-gray-400 leading-relaxed">
-              <span className="font-semibold text-blue-400">⚠️ Note:</span> This
-              analysis is based on technical indicators and should not be used
-              as the sole basis for trading decisions.
+              <span className="font-semibold text-blue-400">
+                ⚠️ {t("signals.details.note")}:
+              </span>{" "}
+              {t("signals.details.disclaimer")}
               {momentumDetails.rsi > 70 && (
                 <span className="text-orange-400">
                   {" "}
-                  RSI is in overbought territory ({">"}70) - consider waiting
-                  for a pullback.
+                  {t("signals.details.rsiOverbought")}
                 </span>
               )}
               {momentumDetails.rsi < 30 && (
                 <span className="text-orange-400">
                   {" "}
-                  RSI is in oversold territory ({"<"}30) - potential bounce
-                  opportunity.
+                  {t("signals.details.rsiOversold")}
                 </span>
               )}
               {strengthDetails.adx < 20 && (
                 <span className="text-orange-400">
                   {" "}
-                  ADX is weak ({"<"}20) - trend strength is low, avoid
-                  trend-following strategies.
+                  {t("signals.details.adxWeak")}
                 </span>
               )}
             </p>

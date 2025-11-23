@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { LockClosedIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import {
+  LockClosedIcon,
+  EyeIcon,
+  EyeSlashIcon,
+} from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/Button";
 
 interface LoginPageProps {
@@ -124,25 +128,7 @@ export const LoginPage = ({ onLogin }: LoginPageProps) => {
               {isLoading ? "Authenticating..." : "Login"}
             </Button>
           </motion.form>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-6 text-center text-xs text-gray-500"
-          >
-            Secured with industry-standard encryption
-          </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="text-center mt-6 text-sm text-gray-500"
-        >
-          © 2024 Trading Platform. All rights reserved.
-        </motion.div>
       </motion.div>
     </div>
   );

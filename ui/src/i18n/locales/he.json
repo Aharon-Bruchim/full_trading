@@ -6,7 +6,6 @@
     "positions": "פוזיציות",
     "trades": "היסטוריית עסקאות",
     "stats": "סטטיסטיקות",
-    "settings": "הגדרות",
     "analytics": "אנליטיקה"
   },
   "home": {
@@ -120,7 +119,8 @@
     "buy": "קנייה",
     "sell": "מכירה",
     "market": "שוק",
-    "limit": "מוגבל"
+    "limit": "מוגבל",
+    "noTrades": "אין עסקאות עדיין"
   },
   "stats": {
     "title": "סטטיסטיקות",
@@ -138,15 +138,7 @@
     "sharpeRatio": "יחס שארפ",
     "profitFactor": "מקדם רווח"
   },
-  "settings": {
-    "title": "הגדרות",
-    "language": "שפה",
-    "theme": "ערכת נושא",
-    "notifications": "התראות",
-    "apiKeys": "מפתחות API",
-    "refreshInterval": "תדירות רענון",
-    "save": "שמור שינויים"
-  },
+
   "common": {
     "loading": "טוען...",
     "error": "שגיאה",
@@ -162,5 +154,121 @@
     "filter": "סינון",
     "export": "ייצוא",
     "refresh": "רענן"
+  },
+  "signals": {
+    "title": "ניתוח סיגנלים",
+    "subtitle": "מנוע ניתוח טכני מתקדם רב-גורמי",
+    "analyze": "נתח סימבול",
+    "analyzeTitle": "ניתוח סיגנל שוק",
+    "recent": "ניתוחים אחרונים",
+    "noSignals": "אין ניתוחים עדיין",
+    "startAnalyzing": "התחל לנתח מגמות וסיגנלים בשוק",
+
+    "weights": {
+      "trend": "ניתוח מגמה",
+      "momentum": "תנופה",
+      "strength": "עוצמה",
+      "structure": "מבנה",
+      "weightInScoring": "משקל בחישוב"
+    },
+
+    "flow": {
+      "title": "תהליך הניתוח",
+      "marketData": "נתוני שוק",
+      "candlesCount": "300 נרות OHLC",
+      "decisionEngine": "מנוע החלטה",
+      "multiFactorAnalysis": "ניתוח רב-גורמי",
+      "scoringEngine": "מנוע חישוב ציון",
+      "finalScoreRange": "טווח ציון סופי",
+
+      "trend": "מגמה",
+      "momentum": "תנופה",
+      "strength": "עוצמה",
+      "structure": "מבנה",
+
+      "trendIndicators": {
+        "ma50": "MA50, MA200",
+        "ema20": "EMA20"
+      },
+      "momentumIndicators": {
+        "rsi": "RSI (14)",
+        "macd": "MACD (12/26/9)",
+        "stochastic": "סטוכסטי"
+      },
+      "strengthIndicators": {
+        "adx": "מחוון ADX",
+        "trendStrength": "חוזק מגמה"
+      },
+      "structureIndicators": {
+        "higherHighs": "שיאים/שפלים גבוהים יותר",
+        "marketPatterns": "תבניות שוק"
+      },
+
+      "trendStatus": "עלייה / ירידה / צידי",
+      "momentumStatus": "שורי / דובי / ניטרלי",
+      "strengthStatus": "חזק / בינוני / חלש",
+      "structureStatus": "שורי / דובי / משתנה"
+    },
+
+    "actions": {
+      "buy": "קנה",
+      "hold": "החזק",
+      "sell": "מכור"
+    },
+    "form": {
+      "symbolRequired": "נדרש לבחור סימבול",
+      "exchange": "בורסה",
+      "exchangeRequired": "נדרש לבחור בורסה",
+      "timeframe": "מסגרת זמן",
+      "timeframeRequired": "נדרש לבחור מסגרת זמן",
+      "timeframes": {
+        "1m": "דקה",
+        "5m": "5 דקות",
+        "15m": "15 דקות",
+        "30m": "30 דקות",
+        "1h": "שעה",
+        "4h": "4 שעות",
+        "1d": "יום"
+      },
+      "dataPoints": "נקודות מידע",
+      "limitRequired": "נדרש לציין כמות",
+      "limitMin": "מינימום 100 נקודות מידע",
+      "limitMax": "מקסימום 500 נקודות מידע",
+      "dataPointsHint": "מספר נרות היסטוריים לניתוח (100-500)"
+    },
+    "details": {
+      "title": "ניתוח סיגנל",
+      "score": "ציון",
+      "strength": "עוצמה",
+      "scoreBreakdown": "פירוק ציון",
+      "trendAnalysis": "ניתוח מגמה",
+      "currentPrice": "מחיר נוכחי",
+      "priceVsMa50": "מחיר מול MA50",
+      "priceVsMa200": "מחיר מול MA200",
+      "momentumIndicators": "מחווני תנופה",
+      "macdSignal": "MACD Signal",
+      "macdHistogram": "MACD Histogram",
+      "stochasticK": "סטוכסטי %K",
+      "stochasticD": "סטוכסטי %D",
+      "strengthMetrics": "מדדי עוצמה",
+      "diDifference": "הפרש DI",
+      "marketStructure": "מבנה שוק",
+      "swingHighs": "שיאים",
+      "swingLows": "שפלים",
+      "lastHigh": "שיא אחרון",
+      "lastLow": "שפל אחרון",
+      "candlesAgo": "נרות אחורה",
+      "note": "הערה",
+      "disclaimer": "ניתוח זה מבוסס על אינדיקטורים טכניים ואין להשתמש בו כבסיס יחיד להחלטות מסחר.",
+      "rsiOverbought": "RSI באזור קניה יתר (>70) - שקול להמתין לתיקון.",
+      "rsiOversold": "RSI באזור מכירה יתר (<30) - הזדמנות אפשרית לעלייה.",
+      "adxWeak": "ADX חלש (<20) - חוזק מגמה נמוך, הימנע מאסטרטגיות מעקב מגמה."
+    },
+    "card": {
+      "deleteAnalysis": "מחק ניתוח"
+    }
+  },
+  "auth": {
+    "logout": "התנתקות"
   }
 }

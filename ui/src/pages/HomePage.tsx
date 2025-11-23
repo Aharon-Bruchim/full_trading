@@ -1,35 +1,35 @@
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { Layout } from '@/components/layout/Layout';
-import { Button } from '@/components/ui/Button';
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { Layout } from "@/components/layout/Layout";
+import { Button } from "@/components/ui/Button";
 import {
   CpuChipIcon,
   BoltIcon,
   ChartBarIcon,
   GlobeAltIcon,
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
 
 const features = [
   {
     icon: CpuChipIcon,
-    title: 'home.features.automated',
-    description: 'home.features.automatedDesc',
+    title: "home.features.automated",
+    description: "home.features.automatedDesc",
   },
   {
     icon: BoltIcon,
-    title: 'home.features.realtime',
-    description: 'home.features.realtimeDesc',
+    title: "home.features.realtime",
+    description: "home.features.realtimeDesc",
   },
   {
     icon: GlobeAltIcon,
-    title: 'home.features.multiExchange',
-    description: 'home.features.multiExchangeDesc',
+    title: "home.features.multiExchange",
+    description: "home.features.multiExchangeDesc",
   },
   {
     icon: ChartBarIcon,
-    title: 'home.features.advanced',
-    description: 'home.features.advancedDesc',
+    title: "home.features.advanced",
+    description: "home.features.advancedDesc",
   },
 ];
 
@@ -59,7 +59,7 @@ export const HomePage = () => {
             transition={{ delay: 0.3 }}
             className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text"
           >
-            {t('home.welcome')}
+            {t("home.welcome")}
           </motion.h1>
 
           <motion.p
@@ -68,7 +68,7 @@ export const HomePage = () => {
             transition={{ delay: 0.4 }}
             className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto"
           >
-            {t('home.subtitle')}
+            {t("home.subtitle")}
           </motion.p>
 
           <motion.div
@@ -78,7 +78,7 @@ export const HomePage = () => {
           >
             <Link to="/bots">
               <Button size="lg" variant="primary">
-                {t('home.startTrading')}
+                {t("home.startTrading")}
               </Button>
             </Link>
           </motion.div>
@@ -90,7 +90,7 @@ export const HomePage = () => {
             animate={{ opacity: 1 }}
             className="text-3xl font-bold text-center mb-12"
           >
-            {t('home.features.title')}
+            {t("home.features.title")}
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -104,29 +104,14 @@ export const HomePage = () => {
                 className="bg-[#131824] rounded-xl border border-[#1e2538] p-6 hover:border-blue-500/50 transition-all"
               >
                 <feature.icon className="w-12 h-12 text-blue-400 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{t(feature.title)}</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  {t(feature.title)}
+                </h3>
                 <p className="text-gray-400">{t(feature.description)}</p>
               </motion.div>
             ))}
           </div>
         </section>
-
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl border border-blue-500/20 p-12 text-center"
-        >
-          <h2 className="text-3xl font-bold mb-4">Ready to start trading?</h2>
-          <p className="text-gray-400 mb-8">
-            Create your first bot and start automated trading in minutes
-          </p>
-          <Link to="/bots">
-            <Button size="lg" variant="primary">
-              Create Your First Bot
-            </Button>
-          </Link>
-        </motion.section>
       </div>
     </Layout>
   );

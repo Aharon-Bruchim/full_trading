@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   ArrowTrendingUpIcon,
   ArrowTrendingDownIcon,
@@ -18,6 +19,8 @@ interface SignalCardProps {
 }
 
 export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
+  const { t } = useTranslation();
+
   const getSignalColor = (signalType: string) => {
     switch (signalType.toUpperCase()) {
       case "BUY":
@@ -165,7 +168,7 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
             <button
               onClick={handleDelete}
               className="p-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
-              title="Delete analysis"
+              title={t("signals.card.deleteAnalysis")}
             >
               <TrashIcon className="w-4 h-4 text-red-400" />
             </button>
@@ -175,14 +178,18 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
 
       <div className="space-y-3 mb-4">
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-400">Score</span>
+          <span className="text-sm text-gray-400">
+            {t("signals.details.score")}
+          </span>
           <span className={`text-lg font-bold ${getScoreColor(signal.score)}`}>
             {signal.score.toFixed(3)}
           </span>
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-400">Strength</span>
+          <span className="text-sm text-gray-400">
+            {t("signals.details.strength")}
+          </span>
           <div className="flex items-center gap-2">
             <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
               <div
@@ -211,7 +218,9 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
         >
           <div className="flex items-center gap-1 mb-1">
             <ArrowTrendingUpIcon className="w-3 h-3 text-blue-400" />
-            <span className="text-xs text-gray-400">Trend</span>
+            <span className="text-xs text-gray-400">
+              {t("signals.flow.trend")}
+            </span>
           </div>
           <p className="text-xs font-bold">
             {getTrendIcon(trend)} {trend}
@@ -224,7 +233,9 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
         >
           <div className="flex items-center gap-1 mb-1">
             <BoltIcon className="w-3 h-3 text-purple-400" />
-            <span className="text-xs text-gray-400">Momentum</span>
+            <span className="text-xs text-gray-400">
+              {t("signals.flow.momentum")}
+            </span>
           </div>
           <p className="text-xs font-bold">
             {getMomentumEmoji(momentum)} {momentum}
@@ -237,7 +248,9 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
         >
           <div className="flex items-center gap-1 mb-1">
             <ShieldCheckIcon className="w-3 h-3 text-green-400" />
-            <span className="text-xs text-gray-400">Strength</span>
+            <span className="text-xs text-gray-400">
+              {t("signals.flow.strength")}
+            </span>
           </div>
           <p className="text-xs font-bold">{strength}</p>
         </div>
@@ -248,7 +261,9 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
         >
           <div className="flex items-center gap-1 mb-1">
             <CubeTransparentIcon className="w-3 h-3 text-orange-400" />
-            <span className="text-xs text-gray-400">Structure</span>
+            <span className="text-xs text-gray-400">
+              {t("signals.flow.structure")}
+            </span>
           </div>
           <p className="text-xs font-bold">{structure}</p>
         </div>

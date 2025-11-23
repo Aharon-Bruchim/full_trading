@@ -7,7 +7,6 @@ import {
   WalletIcon,
   ChartBarIcon,
   ClockIcon,
-  Cog6ToothIcon,
   ArrowRightStartOnRectangleIcon,
   SignalIcon,
 } from "@heroicons/react/24/outline";
@@ -22,7 +21,6 @@ const navItems = [
   { path: "/positions", icon: ChartBarIcon, label: "nav.positions" },
   { path: "/trades", icon: ClockIcon, label: "nav.trades" },
   { path: "/wallet", icon: WalletIcon, label: "nav.wallet" },
-  { path: "/settings", icon: Cog6ToothIcon, label: "nav.settings" },
 ];
 
 export const Navbar = () => {
@@ -100,12 +98,10 @@ export const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               onClick={handleLogout}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-red-400 hover:text-white hover:bg-red-600/20 border border-red-500/20 hover:border-red-500 transition-all"
-              title={t("auth.logout", "Logout")}
+              title={t("auth.logout")}
             >
               <ArrowRightStartOnRectangleIcon className="w-5 h-5" />
-              <span className="hidden md:inline">
-                {t("auth.logout", "Logout")}
-              </span>
+              <span className="hidden md:inline">{t("auth.logout")}</span>
             </motion.button>
           </div>
         </div>

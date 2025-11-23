@@ -5,7 +5,6 @@ import { MarketSignalsPage } from "@/pages/MarketSignalsPage";
 import { PositionsPage } from "@/pages/PositionsPage";
 import { TradesPage } from "@/pages/TradesPage";
 import { WalletPage } from "@/pages/WalletPage";
-import { SettingsPage } from "@/pages/SettingsPage";
 
 export const router = createBrowserRouter([
   {
@@ -31,9 +30,5 @@ export const router = createBrowserRouter([
   {
     path: "/wallet",
     element: <WalletPage />,
-  },
-  {
-    path: "/settings",
-    element: <SettingsPage />,
   },
 ]);

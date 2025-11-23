@@ -1,4 +1,5 @@
 import { useForm, Controller } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/Button";
 import { SignalRequest } from "@/types/signal-types";
 import SymbolSelector from "@/data/SymbolSelector";
@@ -14,6 +15,8 @@ export const SignalForm = ({
   onCancel,
   loading,
 }: SignalFormProps) => {
+  const { t } = useTranslation();
+
   const {
     control,
     register,
@@ -35,7 +38,7 @@ export const SignalForm = ({
           name="symbol"
           control={control}
           rules={{
-            required: "Symbol is required",
+            required: t("signals.form.symbolRequired"),
           }}
           render={({ field }) => (
             <SymbolSelector
@@ -51,10 +54,12 @@ export const SignalForm = ({
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">
-            Exchange
+            {t("signals.form.exchange")}
           </label>
           <select
-            {...register("exchange", { required: "Exchange is required" })}
+            {...register("exchange", {
+              required: t("signals.form.exchangeRequired"),
+            })}
             className="w-full bg-[#1a1f2e] border border-[#2a3142] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
           >
             <option value="binance">Binance</option>
@@ -70,19 +75,21 @@ export const SignalForm = ({
 
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">
-            Timeframe
+            {t("signals.form.timeframe")}
           </label>
           <select
-            {...register("timeframe", { required: "Timeframe is required" })}
+            {...register("timeframe", {
+              required: t("signals.form.timeframeRequired"),
+            })}
             className="w-full bg-[#1a1f2e] border border-[#2a3142] rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
           >
-            <option value="1m">1 Minute</option>
-            <option value="5m">5 Minutes</option>
-            <option value="15m">15 Minutes</option>
-            <option value="30m">30 Minutes</option>
-            <option value="1h">1 Hour</option>
-            <option value="4h">4 Hours</option>
-            <option value="1d">1 Day</option>
+            <option value="1m">{t("signals.form.timeframes.1m")}</option>
+            <option value="5m">{t("signals.form.timeframes.5m")}</option>
+            <option value="15m">{t("signals.form.timeframes.15m")}</option>
+            <option value="30m">{t("signals.form.timeframes.30m")}</option>
+            <option value="1h">{t("signals.form.timeframes.1h")}</option>
+            <option value="4h">{t("signals.form.timeframes.4h")}</option>
+            <option value="1d">{t("signals.form.timeframes.1d")}</option>
           </select>
           {errors.timeframe && (
             <p className="text-red-400 text-sm mt-1">
@@ -94,13 +101,13 @@ export const SignalForm = ({
 
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">
-          Data Points
+          {t("signals.form.dataPoints")}
         </label>
         <input
           {...register("limit", {
-            required: "Limit is required",
-            min: { value: 100, message: "Minimum 100 data points" },
-            max: { value: 500, message: "Maximum 500 data points" },
+            required: t("signals.form.limitRequired"),
+            min: { value: 100, message: t("signals.form.limitMin") },
+            max: { value: 500, message: t("signals.form.limitMax") },
           })}
           type="number"
           placeholder="300"
@@ -110,7 +117,7 @@ export const SignalForm = ({
           <p className="text-red-400 text-sm mt-1">{errors.limit.message}</p>
         )}
         <p className="text-gray-500 text-xs mt-1">
-          Number of historical candles to analyze (100-500)
+          {t("signals.form.dataPointsHint")}
         </p>
       </div>
 
@@ -122,7 +129,7 @@ export const SignalForm = ({
           className="flex-1"
           disabled={loading}
         >
-          Cancel
+          {t("common.cancel")}
         </Button>
         <Button
           type="submit"
@@ -130,7 +137,7 @@ export const SignalForm = ({
           className="flex-1"
           loading={loading}
         >
-          Analyze
+          {t("signals.analyze")}
         </Button>
       </div>
     </form>

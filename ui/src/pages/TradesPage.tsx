@@ -139,7 +139,7 @@ export const TradesPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-20 bg-[#131824] rounded-xl border border-[#1e2538]"
           >
-            <p className="text-gray-400 text-lg">No trades yet</p>
+            <p className="text-gray-400 text-lg">{t("trades.noTrades")}</p>
           </motion.div>
         )}
       </div>
