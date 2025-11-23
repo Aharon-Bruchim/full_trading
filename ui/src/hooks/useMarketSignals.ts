@@ -9,7 +9,15 @@ export const useGetSignal = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: SignalRequest) => signalsApi.analyze(data),
+    mutationFn: async (data: SignalRequest) => {
+      const result = await signalsApi.analyze(data);
+
+      return {
+        ...result,
+        id: `${result.symbol}-${result.timeframe}-${Date.now()}`,
+        timestamp: result.timestamp || new Date().toISOString(),
+      };
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [SIGNALS_QUERY_KEY] });
       toast.success("Signal analysis completed!");

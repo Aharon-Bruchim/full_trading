@@ -5,6 +5,9 @@ import {
   MinusIcon,
   ClockIcon,
   TrashIcon,
+  BoltIcon,
+  ShieldCheckIcon,
+  CubeTransparentIcon,
 } from "@heroicons/react/24/outline";
 import { format } from "date-fns";
 
@@ -43,12 +46,95 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
     return "text-gray-400";
   };
 
+  const getTrendColor = (trend: string) => {
+    switch (trend?.toUpperCase()) {
+      case "UPTREND":
+        return "text-green-400 bg-green-500/10";
+      case "DOWNTREND":
+        return "text-red-400 bg-red-500/10";
+      case "SIDEWAYS":
+        return "text-yellow-400 bg-yellow-500/10";
+      default:
+        return "text-blue-400 bg-blue-500/10";
+    }
+  };
+
+  const getMomentumColor = (momentum: string) => {
+    switch (momentum?.toUpperCase()) {
+      case "BULLISH":
+        return "text-green-400 bg-green-500/10";
+      case "BEARISH":
+        return "text-red-400 bg-red-500/10";
+      case "NEUTRAL":
+        return "text-gray-400 bg-gray-500/10";
+      default:
+        return "text-purple-400 bg-purple-500/10";
+    }
+  };
+
+  const getStrengthColor = (strength: string) => {
+    switch (strength?.toUpperCase()) {
+      case "STRONG":
+        return "text-green-400 bg-green-500/10";
+      case "WEAK":
+        return "text-orange-400 bg-orange-500/10";
+      case "MODERATE":
+        return "text-yellow-400 bg-yellow-500/10";
+      default:
+        return "text-green-400 bg-green-500/10";
+    }
+  };
+
+  const getStructureColor = (structure: string) => {
+    switch (structure?.toUpperCase()) {
+      case "TRENDING":
+        return "text-blue-400 bg-blue-500/10";
+      case "CHOPPY":
+        return "text-orange-400 bg-orange-500/10";
+      case "RANGING":
+        return "text-purple-400 bg-purple-500/10";
+      default:
+        return "text-orange-400 bg-orange-500/10";
+    }
+  };
+
+  const getTrendIcon = (trend: string) => {
+    switch (trend?.toUpperCase()) {
+      case "UPTREND":
+        return "↑";
+      case "DOWNTREND":
+        return "↓";
+      case "SIDEWAYS":
+        return "→";
+      default:
+        return "•";
+    }
+  };
+
+  const getMomentumEmoji = (momentum: string) => {
+    switch (momentum?.toUpperCase()) {
+      case "BULLISH":
+        return "🚀";
+      case "BEARISH":
+        return "🐻";
+      case "NEUTRAL":
+        return "⚖️";
+      default:
+        return "";
+    }
+  };
+
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onDelete) {
       onDelete();
     }
   };
+
+  const trend = signal.details?.trend || signal.trend || "N/A";
+  const momentum = signal.details?.momentum || signal.momentum || "N/A";
+  const strength = signal.details?.strength || signal.strength || "N/A";
+  const structure = signal.details?.structure || signal.structure || "N/A";
 
   return (
     <motion.div
@@ -100,7 +186,7 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
           <div className="flex items-center gap-2">
             <div className="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
               <div
-                className={`h-full ${
+                className={`h-full transition-all ${
                   signal.strength_percent > 70
                     ? "bg-green-500"
                     : signal.strength_percent > 40
@@ -118,27 +204,53 @@ export const SignalCard = ({ signal, onClick, onDelete }: SignalCardProps) => {
       </div>
 
       <div className="grid grid-cols-2 gap-2 mb-4">
-        <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-2">
-          <span className="text-xs text-gray-400">Trend</span>
-          <p className="text-sm font-semibold text-blue-400">{signal.trend}</p>
-        </div>
-        <div className="bg-purple-500/5 border border-purple-500/20 rounded-lg p-2">
-          <span className="text-xs text-gray-400">Momentum</span>
-          <p className="text-sm font-semibold text-purple-400">
-            {signal.momentum}
+        <div
+          className={`border border-blue-500/20 rounded-lg p-2 ${getTrendColor(
+            trend
+          )}`}
+        >
+          <div className="flex items-center gap-1 mb-1">
+            <ArrowTrendingUpIcon className="w-3 h-3 text-blue-400" />
+            <span className="text-xs text-gray-400">Trend</span>
+          </div>
+          <p className="text-xs font-bold">
+            {getTrendIcon(trend)} {trend}
           </p>
         </div>
-        <div className="bg-green-500/5 border border-green-500/20 rounded-lg p-2">
-          <span className="text-xs text-gray-400">Strength</span>
-          <p className="text-sm font-semibold text-green-400">
-            {signal.strength}
+        <div
+          className={`border border-purple-500/20 rounded-lg p-2 ${getMomentumColor(
+            momentum
+          )}`}
+        >
+          <div className="flex items-center gap-1 mb-1">
+            <BoltIcon className="w-3 h-3 text-purple-400" />
+            <span className="text-xs text-gray-400">Momentum</span>
+          </div>
+          <p className="text-xs font-bold">
+            {getMomentumEmoji(momentum)} {momentum}
           </p>
         </div>
-        <div className="bg-orange-500/5 border border-orange-500/20 rounded-lg p-2">
-          <span className="text-xs text-gray-400">Structure</span>
-          <p className="text-sm font-semibold text-orange-400">
-            {signal.structure}
-          </p>
+        <div
+          className={`border border-green-500/20 rounded-lg p-2 ${getStrengthColor(
+            strength
+          )}`}
+        >
+          <div className="flex items-center gap-1 mb-1">
+            <ShieldCheckIcon className="w-3 h-3 text-green-400" />
+            <span className="text-xs text-gray-400">Strength</span>
+          </div>
+          <p className="text-xs font-bold">{strength}</p>
+        </div>
+        <div
+          className={`border border-orange-500/20 rounded-lg p-2 ${getStructureColor(
+            structure
+          )}`}
+        >
+          <div className="flex items-center gap-1 mb-1">
+            <CubeTransparentIcon className="w-3 h-3 text-orange-400" />
+            <span className="text-xs text-gray-400">Structure</span>
+          </div>
+          <p className="text-xs font-bold">{structure}</p>
         </div>
       </div>
 
