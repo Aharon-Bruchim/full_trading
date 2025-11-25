@@ -3,8 +3,8 @@ import express from 'express';
 import helmet from 'helmet';
 import http from 'http';
 import cors from 'cors';
-import corsOptions from '../corsConfig';
-
+import { config } from '../config';
+const { corsOptions } = config;
 import { errorMiddleware } from '../utils/express/error';
 import { loggerMiddleware } from '../utils/logger/middleware';
 import { appRouter } from './router';

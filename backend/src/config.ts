@@ -20,8 +20,11 @@ export const config = {
     positions: {
         positionsCollectionName: env.get('POSITIONS_COLLECTION').required().asString(),
     },
-    cors: {
+    corsOptions: {
         origin: env.get('CORS_ORIGIN').required().asString(),
+        credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
     },
     python: {
         url: env.get('PYTHON_SERVICE_URL').required().asString(),
