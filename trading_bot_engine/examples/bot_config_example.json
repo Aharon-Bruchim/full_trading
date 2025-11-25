@@ -1,0 +1,91 @@
+{
+  "_id": "673d4f1234567890abcdef01",
+  "user_id": "user_123",
+  "name": "BTC Long 15m - Bitunix",
+  "exchange": "bitunix",
+  "symbol": "BTCUSDT",
+  "status": "RUNNING",
+  "created_at": "2024-11-25T09:00:00Z",
+  "updated_at": "2024-11-25T10:30:00Z",
+  "last_heartbeat": "2024-11-25T10:30:15Z",
+  
+  "config": {
+    "trading": {
+      "symbol": "BTCUSDT",
+      "mode": "ISOLATED",
+      "leverage": 10
+    },
+    
+    "timeframe": {
+      "candle_size": "15m",
+      "update_interval": 5
+    },
+    
+    "strategy": {
+      "type": "long_dip_atr",
+      "direction": "LONG"
+    },
+    
+    "atr": {
+      "enabled": true,
+      "period": 10,
+      "entry_multiplier": 0.8,
+      "target_multiplier": 1.0,
+      "stop_loss_multiplier": 1.5,
+      
+      "dynamic_adjustment": {
+        "enabled": true,
+        "when_atr_percent_below_1": {
+          "entry_multiplier": 0.6
+        },
+        "when_atr_percent_above_3": {
+          "entry_multiplier": 1.5
+        }
+      }
+    },
+    
+    "budget": {
+      "allocated_amount": 2000.0,
+      "max_position_percentage": 0.50,
+      
+      "position_sizing": {
+        "mode": "dip_size_based",
+        "levels": [
+          {"atr_multiplier": 1.0, "budget_percentage": 0.05},
+          {"atr_multiplier": 1.5, "budget_percentage": 0.08},
+          {"atr_multiplier": 2.0, "budget_percentage": 0.12},
+          {"atr_multiplier": 2.5, "budget_percentage": 0.15}
+        ]
+      }
+    },
+    
+    "risk_management": {
+      "max_trades_per_minute": 1,
+      "max_trades_per_hour": 3,
+      "max_trades_per_day": 12,
+      "max_daily_loss": -100.0,
+      "max_concurrent_positions": 5,
+      "bot_stop_loss": -200.0
+    },
+    
+    "exit": {
+      "trailing_stop": {
+        "enabled": true,
+        "activation_atr_multiplier": 0.5,
+        "trail_distance_atr_multiplier": 0.4
+      }
+    },
+    
+    "fees": {
+      "maker": 0.0002,
+      "taker": 0.0006
+    }
+  },
+  
+  "performance": {
+    "total_realized_pnl": 28.50,
+    "total_unrealized_pnl": 3.60,
+    "trades_today": 2,
+    "win_rate": 0.67
+  }
+}
